@@ -1,6 +1,6 @@
 module Main where
 
-import GHC.Stack
+-- import GHC.Stack
 import System.Directory
 import Data.Maybe (fromJust)
 
@@ -8,13 +8,13 @@ import Data.Maybe (fromJust)
 -- @
 -- stack run --profile  --resolver=ghc-9.0.1 -- +RTS  -xc
 -- @
-main :: HasCallStack => IO ()
+main :: IO ()
 main = do
   _ <- myDo2 "/z"
   print f1
 
 
-myDo2:: HasCallStack => FilePath -> IO [FilePath]
+myDo2:: FilePath -> IO [FilePath]
 myDo2 x = do
   putStrLn "ppp"
   r <- myDo x
@@ -22,7 +22,7 @@ myDo2 x = do
   pure r
 
 
-myDo :: HasCallStack => FilePath -> IO [FilePath]
+myDo :: FilePath -> IO [FilePath]
 myDo x = do
   putStrLn "DDD"
   r <- getDirectoryContents x
